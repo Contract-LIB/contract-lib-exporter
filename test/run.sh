@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -x
 
 targets="key dafny verifast"
 
@@ -10,18 +10,17 @@ cd ..
 ./gradlew shadowJar
 cd test
 
-for i in $targets ;
+for i in $targets
 do
     echo "Working on $i"
     rm -rf $i
     mkdir -p $i
-    java -jar ../build/libs/contractlib-exporter-1.0-SNAPSHOT-all.jar -d $i -v "$1"
+    java -jar ../build/libs/contractlib-exporter-1.0-SNAPSHOT-all.jar -t $i -d $i -v "$1"
 
     echo "Working on $i.inner"
     rm -rf $i.inner
     mkdir -p $i.inner
-    java -jar ../build/libs/contractlib-exporter-1.0-SNAPSHOT-all.jar -d $i.inner -v -o inner "$1"
-    echo "java out"
+    java -jar ../build/libs/contractlib-exporter-1.0-SNAPSHOT-all.jar -t $i -d $i.inner -v -o inner "$1"
 done
 
 

@@ -49,7 +49,7 @@ public class Main {
     @Option(names = { "-v", "--verbose" }, description = "be verbose")
     public boolean verbose = false;
 
-    @Option(names = { "-o", "--option" }, description = "language-specific option", arity = "0..*")
+    @Option(names = { "-o", "--option" }, description = "language-specific option", split=",")
     public List<String> options = new ArrayList<>();
 
     @Option(names = { "-h", "--help" }, usageHelp = true, description = "display a help message")
