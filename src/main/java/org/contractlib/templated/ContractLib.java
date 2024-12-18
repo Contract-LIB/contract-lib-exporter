@@ -5,6 +5,7 @@ import org.contractlib.ast.Type;
 import org.contractlib.factory.Mode;
 
 import java.util.List;
+import java.util.Optional;
 
 public class ContractLib {
 
@@ -54,43 +55,12 @@ public class ContractLib {
             return params.stream().filter(p -> p.mode == Mode.IN && !p.name.equals("this")).toList();
         }
 
-        public boolean modifies() {
+        public boolean modifier() {
             return params.stream().anyMatch(p -> p.mode == Mode.INOUT && p.name.equals("this"));
         }
 
-        public String renderedPre() {
-            return render(pre, false);
-        }
-
-        // In post mode, we need to render the postcondition with the result variable
-        private String render(Term pre, boolean postMode) {
-            switch(pre) {
-                case Term.Application app:
-                    var args = app.arguments().stream().map(a -> render(a, postMode)).toList();
-                    return handleApp(app.function(), args);
-                case Term.Variable var:
-                    return var.name();
-                case Term.Literal lit:
-                    return lit.value().toString();
-                case Term.Old old:
-                    return render(old.argument(), false);
-                case Term.Binder binder:
-                    throw new RuntimeException("Binders are currently not supported in contracts");
-            }
-        }
-
-        private String handleApp(String app, List<String> args) {
-            return switch (app) {
-                case "and" ->
-                        "(" + args.stream().reduce((a, b) -> a + " && " + b).orElse("true") + ")";
-                case "or" ->
-                        "(" + args.stream().reduce((a, b) -> a + " || " + b).orElse("false") + ")";
-                case "not" -> "!" + args.getFirst();
-                case "=", "<", "<=", ">", ">=" ->
-                        "(" + args.getFirst() + " " + app + " " + args.get(1) + ")";
-                default ->
-                        app + "(" + args.stream().reduce((a, b) -> a + ", " + b).orElse("") + ")";
-            };
+        public Optional<ModeTypedName> getReturnParameter() {
+            return params.stream().filter(p -> p.mode == Mode.OUT).findFirst();
         }
     }
 
@@ -109,6 +79,10 @@ public class ContractLib {
     }
 
     public record Abstraction(String name, List<String> params, List<TypedName> selectors) {
+
+        public List<String> getSelectorNames() {
+            return selectors().stream().map(ContractLib.TypedName::name).toList();
+        }
     }
 
 

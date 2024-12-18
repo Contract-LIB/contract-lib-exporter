@@ -32,18 +32,38 @@ public class Util {
     }
 
     public static <E> CharSequence commatize(Iterable<E> list, Function<E, String> f) {
+        return commatize(list, f, ", ");
+    }
+
+    public static <E> CharSequence commatize(Iterable<E> list, Function<E, String> f, String delimiter) {
         var result = new StringBuilder();
         boolean first = true;
         for (E e : list) {
             if (first) {
                 first = false;
             } else {
-                result.append(", ");
+                result.append(delimiter);
             }
             result.append(f.apply(e));
         }
         return result;
     }
+
+
+
+    public static String removeLeading_(String s) {
+        if (s.startsWith("_")) {
+            return s.substring(1);
+        } else {
+            return s;
+        }
+    }
+
+    public static String parenNonEmpty(CharSequence s) {
+        if(s.isEmpty()) return "";
+        return "(" + s + ")";
+    }
+
 
     private static class ConcatedList<E> extends AbstractList<E> {
         private final List<E> l1;

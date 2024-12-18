@@ -5,5 +5,5 @@ import java.io.IOException;
 public interface TemplateTranslation {
     String getName();
 
-    void translate(Main main, ContractLib contractLib) throws IOException;
+    void translate(ContractLib contractLib) throws IOException;
 }

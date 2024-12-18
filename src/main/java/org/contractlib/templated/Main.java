@@ -1,6 +1,8 @@
 package org.contractlib.templated;
 
 import org.antlr.v4.runtime.CharStreams;
+import org.contractlib.dafny.DafnyTranslation;
+import org.contractlib.key.KeYTranslation;
 import org.contractlib.verifast.VerifastTranslation;
 import picocli.CommandLine;
 import picocli.CommandLine.*;
@@ -18,12 +20,12 @@ public class Main {
     private Main() throws FileNotFoundException {
         // todo eventually that should be a service loader
         // The following were all (fully automatically) suggested by github copilot ;)
-        translations.add(new VerifastTranslation());
-//        translations.add(new KeYTranslation());
+        translations.add(new VerifastTranslation(this));
+        translations.add(new KeYTranslation(this));
 //        translations.add(new BoogieTranslation());
 //        translations.add(new Why3Translation());
 //        translations.add(new ViperTranslation());
-//        translations.add(new DafnyTranslation());
+        translations.add(new DafnyTranslation(this));
 //        translations.add(new FramaCTranslation());
 //        translations.add(new JMLTranslation());
 //        translations.add(new SpecSharpTranslation());
@@ -92,7 +94,7 @@ public class Main {
             }
         }
 
-        tt.translate(this, contractLib);
+        tt.translate(contractLib);
     }
 
 }
