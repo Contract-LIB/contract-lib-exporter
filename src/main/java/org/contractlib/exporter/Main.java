@@ -1,9 +1,9 @@
-package org.contractlib.templated;
+package org.contractlib.exporter;
 
 import org.antlr.v4.runtime.CharStreams;
-import org.contractlib.dafny.DafnyTranslation;
-import org.contractlib.key.KeYTranslation;
-import org.contractlib.verifast.VerifastTranslation;
+import org.contractlib.exporter.dafny.DafnyTranslation;
+import org.contractlib.exporter.key.KeYTranslation;
+import org.contractlib.exporter.verifast.VerifastTranslation;
 import picocli.CommandLine;
 import picocli.CommandLine.*;
 

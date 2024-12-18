@@ -1,7 +1,7 @@
-package org.contractlib.dafny;
+package org.contractlib.exporter.dafny;
 
 import org.contractlib.ast.Term;
-import org.contractlib.templated.*;
+import org.contractlib.exporter.*;
 
 import java.io.IOException;
 import java.nio.file.Files;

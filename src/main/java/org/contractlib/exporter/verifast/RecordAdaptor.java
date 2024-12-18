@@ -1,4 +1,4 @@
-package org.contractlib.verifast;
+package org.contractlib.exporter.verifast;
 
 import org.stringtemplate.v4.Interpreter;
 import org.stringtemplate.v4.ModelAdaptor;

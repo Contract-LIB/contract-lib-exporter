@@ -1,6 +1,6 @@
 package org.contractlib.verifast;
 
-import org.contractlib.templated.Util;
+import org.contractlib.exporter.Util;
 import org.contractlib.util.Pair;
 import org.junit.jupiter.api.Test;
 

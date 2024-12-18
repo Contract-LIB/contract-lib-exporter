@@ -1,7 +1,7 @@
-package org.contractlib.key;
+package org.contractlib.exporter.key;
 
 import org.contractlib.ast.Term;
-import org.contractlib.templated.*;
+import org.contractlib.exporter.*;
 
 import java.io.IOException;
 import java.nio.file.Files;

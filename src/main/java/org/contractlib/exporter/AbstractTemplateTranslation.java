@@ -1,4 +1,4 @@
-package org.contractlib.templated;
+package org.contractlib.exporter;
 
 import org.contractlib.ast.Term;
 import org.contractlib.ast.Type;

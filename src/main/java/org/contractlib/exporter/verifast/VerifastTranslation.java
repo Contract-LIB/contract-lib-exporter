@@ -1,12 +1,11 @@
-package org.contractlib.verifast;
+package org.contractlib.exporter.verifast;
 
 import org.contractlib.ast.Term;
-import org.contractlib.templated.*;
+import org.contractlib.exporter.*;
 
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;

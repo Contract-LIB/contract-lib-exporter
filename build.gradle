@@ -30,5 +30,5 @@ test {
 }
 
 application {
-    mainClassName = 'org.contractlib.templated.Main'
+    mainClassName = 'org.contractlib.exporter.Main'
 }

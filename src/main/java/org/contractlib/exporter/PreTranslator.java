@@ -1,4 +1,4 @@
-package org.contractlib.templated;
+package org.contractlib.exporter;
 
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CommonTokenStream;

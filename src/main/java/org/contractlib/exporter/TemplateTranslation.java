@@ -1,4 +1,4 @@
-package org.contractlib.templated;
+package org.contractlib.exporter;
 
 import java.io.IOException;
 
