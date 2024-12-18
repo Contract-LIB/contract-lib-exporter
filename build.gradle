@@ -17,6 +17,7 @@ dependencies {
     // not in public repositories at the moment! Use mavenLocal!
     implementation 'org.contractlib:contractlib:0.1-SNAPSHOT'
     implementation 'org.antlr:ST4:4.3.4'
+    implementation 'info.picocli:picocli:4.7.6'
 
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
